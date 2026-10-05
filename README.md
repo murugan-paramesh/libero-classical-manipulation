@@ -130,6 +130,9 @@ ln -sfn "$PWD/intrinsic_stack/cc" third_party/intrinsic-core/libero_bridge
 (cd third_party/intrinsic-core && \
 bazel --output_base=$HOME/bazel_out build --jobs=2 \
     //libero_bridge:libero_planner_server)
+
+BAZEL_BIN=$(cd third_party/intrinsic-core && bazel --output_base=$HOME/bazel_out info bazel-bin)
+ln -sfn "$BAZEL_BIN" third_party/intrinsic-core/bazel-bin
 ```
 
 Generate the Python interfaces for the Intrinsic APIs and run the unit tests.
