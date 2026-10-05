@@ -1,4 +1,4 @@
-# Frozen evaluation protocol (declared before running the final evaluation; see docs/report.md).
+# Frozen evaluation protocol used for the final evaluation; archived run metadata is in evaluations/final/protocol_A.json and protocol_B.json.
 suite: libero_10
 tasks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 # Development init states (used while building/tuning skills) are 0..4 of each task's 50 official

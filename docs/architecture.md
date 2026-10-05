@@ -50,8 +50,9 @@ grasp/place geometry, OSC action conversion, skill sequencing, verification, log
 
 ## Geometric approximations (documented)
 - Robot links: exact robosuite collision meshes (STL export of the compiled MuJoCo meshes,
-  loaded as convex by Intrinsic for collision). Finger geometry fixed at the fully-open pose
-  (conservative envelope; the closed fingers lie inside it).
+  loaded as convex by Intrinsic for collision). The two fingers are represented as separate
+  collision objects and their poses are synchronized from the current MuJoCo finger joint
+  positions so that the collision model follows the actual gripper opening.
 - Objects: LIBERO's own box decompositions (exact); the microwave's mesh parts as convex meshes.
 - Floor plane skipped (Intrinsic rejects infinite planes; the robot base is above the table).
 - Articulated parts (drawer, door, knob) are separate static objects whose poses are re-synced

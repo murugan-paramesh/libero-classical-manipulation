@@ -22,7 +22,7 @@ The final system successfully completed **93 out of 100 episodes**.
 | Task 9 | 7/10 |
 | **Overall** | **93/100** |
 
-The evaluation used a fixed seed of 0 and a maximum budget of 1,200 control steps per episode. Task success was determined using LIBERO's task-success predicates.
+The evaluation used a fixed seed of 0 and a maximum budget of 1,200 control steps per episode. The overall result was **93/100** within this budget; **86/100** episodes succeeded within the secondary 600-step horizon. Task success was determined using LIBERO's task-success predicates.
 
 All robot motions were planned through Intrinsic Core. During the final evaluation, the system made **1,343 `PlanTrajectory` calls**, with an average planning time of approximately **22 ms** and no planning timeouts.
 
@@ -33,6 +33,8 @@ The complete evaluation records are available in `evaluations/final/`. I have al
 ### Limitation
 
 The current implementation uses object and articulation poses directly from the simulator rather than estimating them from camera images. The focus of this project is therefore on the classical manipulation stack—kinematics, collision checking, motion planning, and execution—rather than visual perception.
+
+Post-execution collision auditing flagged 40 of 1,260 audited executed-path segments across 24 episodes; 20 of those 24 episodes still satisfied LIBERO's task-success predicate. These audit flags are retained in the episode records and are reported as an execution/collision-model limitation rather than being silently discarded.
 
 ## Project Structure
 
@@ -72,7 +74,7 @@ LIBERO and Intrinsic Core are external dependencies and are not included as full
 
 ## Setup
 
-The project was tested on Ubuntu 24.04 (x86-64). Approximately 30 GB of free disk space is recommended for building Intrinsic Core with Bazel.
+The project was tested on Ubuntu 24.04 (x86-64). Bazel 8.8.1 must be available on `PATH` before building Intrinsic Core; the pinned Intrinsic Core checkout declares the same version in `.bazelversion`. Approximately 30 GB of free disk space is recommended for the build.
 
 The exact versions of Intrinsic Core and LIBERO used for the final evaluation are provided below so that the setup can be reproduced.
 

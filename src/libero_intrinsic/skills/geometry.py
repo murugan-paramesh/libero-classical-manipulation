@@ -232,7 +232,7 @@ def object_point_cloud(env, body: str, spacing: float = 0.008) -> np.ndarray:
 
 
 # PandaGripper geometry in the tcp frame (x = closing axis, y = finger width, z = toward fingertips)
-# measured from the robosuite PandaGripper collision meshes in the tcp frame (see docs/report.md)
+# measured from the robosuite PandaGripper collision meshes in the tcp frame
 PAD_Z = (-0.016, 0.010)        # finger pad / finger tip extent along tcp z (+3 mm margin)
 PAD_HALF_Y = 0.012             # half width of the pad contact face (+ margin)
 FINGER_HALF_Y = 0.016          # finger body half width (+ margin)
